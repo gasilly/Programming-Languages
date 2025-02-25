@@ -1,0 +1,28 @@
+ about:blank <- DELETE THIS AFTER FINISHING PLEASE, USE TO MAKE A BLANK HTML PAGE BY PUTTING IN BROWSER ADDRESS BAR
+
+ Quinn Wright
+ 1001690798
+ 3/9/2025
+
+ CURRIED FUNCTION FOR GETTING MULTIPLES BY A CERTAIN FACTOR.HOW TO MAKE IT SO THE CURRIED FUNCTION CAN BE USED FOR MULTIPLE DIFFERENT ARGUMENTS OF FACTOR. SINCE FACTOR IS A CONSTANT IT CANT BE CHANGED AND THERE IS NO REUSEABILITY IN THIS CODE.
+
+ // A curried function that takes two arguments
+const multiply = (a) => (b) => a * b;
+
+// A curried function that will be used with map
+const multiplyBy = (fact) => (array) => array.map(multiply(fact));
+
+// Example usage
+const inputTable = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+const fiveTable = multiplyBy(5)(inputTable);
+const thirteenTable = multiplyBy(13)(inputTable);
+const squaresTable = multiplyBy()(inputTable); // <- NEEDS WORK
+console.log("Five Table: ", fiveTable);
+console.log("Thirteen Table: ", thirteenTable);
+console.log("squaresTable: ", squaresTable);
+
+const cylinder_volume = (r) => (h) => 3.14 * r * r * h;
+console.log("cylinder_volume: ", cylinder_volume(5)(10));
+console.log("cylinder_volume: ", cylinder_volume(5)(17));
+console.log("cylinder_volume: ", cylinder_volume(5)(11));
