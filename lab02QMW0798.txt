@@ -6,23 +6,78 @@
 
  CURRIED FUNCTION FOR GETTING MULTIPLES BY A CERTAIN FACTOR.HOW TO MAKE IT SO THE CURRIED FUNCTION CAN BE USED FOR MULTIPLE DIFFERENT ARGUMENTS OF FACTOR. SINCE FACTOR IS A CONSTANT IT CANT BE CHANGED AND THERE IS NO REUSEABILITY IN THIS CODE.
 
+//Question #1, #2
+
  // A curried function that takes two arguments
 const multiply = (a) => (b) => a * b;
 
 // A curried function that will be used with map
 const multiplyBy = (fact) => (array) => array.map(multiply(fact));
 
-// Example usage
+// A curried function that will square its arguments
+const squareArray = array => array.map(num => num * num);
+
 const inputTable = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
 const fiveTable = multiplyBy(5)(inputTable);
 const thirteenTable = multiplyBy(13)(inputTable);
-const squaresTable = multiplyBy()(inputTable); // <- NEEDS WORK
+const squaresTable = squareArray(inputTable);
 console.log("Five Table: ", fiveTable);
 console.log("Thirteen Table: ", thirteenTable);
 console.log("squaresTable: ", squaresTable);
+
+//Question #3
+
+//A function that checks for all the odd multiples of 5 from 1-100
+function oddMultiplesOfFive(currentValue){
+    if(currentValue > 100){
+        return;
+    }
+    else if((currentValue % 5 == 0) && ((currentValue % 2) != 0)){
+        console.log(currentValue);
+    }
+    oddMultiplesOfFive(currentValue + 1);
+}
+
+oddMultiplesOfFive(1);
+
+//Question #4
+
+//A function that checks for all the even multiples of 7 from 1-100
+function evenMultiplesOfSeven(currentValue){
+    if(currentValue > 100){
+        return;
+    }
+    else if(((currentValue % 7) == 0) && ((currentValue % 2) == 0)){
+        console.log(currentValue);
+    }
+    evenMultiplesOfSeven(currentValue + 1);
+}
+
+evenMultiplesOfSeven(1);
+
+//Question #5
 
 const cylinder_volume = (r) => (h) => 3.14 * r * r * h;
 console.log("cylinder_volume: ", cylinder_volume(5)(10));
 console.log("cylinder_volume: ", cylinder_volume(5)(17));
 console.log("cylinder_volume: ", cylinder_volume(5)(11));
+
+//Question #6
+
+    makeTag = function(beginTag, endTag){
+        return function(textcontent){
+            return beginTag + textcontent + endTag;
+        }
+    }
+    let tableTag = makeTag("<table>", "</table>");
+    let trTag = makeTag("<tr>", "</tr>");
+    let tdTag = makeTag("<td>", "</td>");
+    let rowContent = trTag(tdTag(" ") + tdTag(" "));
+    let tableContent = tableTag(rowContent);
+
+    console.log(tableContent);
+
+//Question #7
+
+
